@@ -1,12 +1,12 @@
 ## Task Manager - Kanban
 
-Projeto front-end only com Next.js 14 (App Router), TypeScript e Tailwind CSS.
+A  `frontend` project developed only with `Next.js 14`, ` TypeScript`  and `Tailwind CSS`.
 
 
-## Recursos
+## Recurses
 
-- Três colunas: A fazer, Em andamento e Concluídas
-- Arrastar e soltar (entre colunas e para reordenar), sem bibliotecas externas
-- Botões de mover, editar e excluir em cada cartão (também funcionam no celular)
-- Duplo clique no texto para editar
-- Dados salvos no `localStorage` do navegador
+- **Three Columns**: To do, In processing and Finished;
+- **Drag and Drop**: Between columns and to reorder, no external libs;
+- **Move Buttons**: Edit and delete on each card;
+- **Double Touch**: In text to edit;
+- **Save Information**: In to navigator `localStorage`.
