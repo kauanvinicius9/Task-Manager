@@ -1,4 +1,4 @@
-## Task Manager - Kanban
+# Task Manager - Kanban
 
 A  `frontend` project developed only with `Next.js 14`, ` TypeScript`  and `Tailwind CSS`.
 
