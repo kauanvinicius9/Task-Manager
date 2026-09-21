@@ -37,6 +37,7 @@ export default function TaskCard({ task, columnId, isDragging, onDragStart, onDr
     const value = draft.trim();
 
     if (value && value !== task.title) onUpdate(task.id, value);
+    
     else setDraft(task.title);
     setEditing(false);
   };
@@ -61,10 +62,7 @@ export default function TaskCard({ task, columnId, isDragging, onDragStart, onDr
                 commit();
               }
 
-              if (e.key === "Escape") {
-                setDraft(task.title);
-                setEditing(false);
-              }
+              if (e.key === "Escape") { setDraft(task.title); setEditing(false)}
             }}
 
             className="w-full resize-none border border-line p-2 text-sm focus:ouline-none focus:ring-0"/>

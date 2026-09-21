@@ -10,13 +10,11 @@ export default function AddTask({ onAdd }: Props) {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
 
-  const close = () => {
-    setTitle("");
-    setOpen(false);
-  };
+  const close = () => { setTitle(""); setOpen(false)};
 
   const submit = () => {
     const value = title.trim();
+    
     if (value) onAdd(value);
     close();
   };

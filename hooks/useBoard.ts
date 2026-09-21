@@ -15,6 +15,7 @@ export function useBoard() {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(Storage_Key);
+
       if (saved) setBoard(JSON.parse(saved) as BoardState);
     } catch {}
     setReady(true);
@@ -22,6 +23,7 @@ export function useBoard() {
 
   useEffect(() => {
     if (!ready) return;
+
     try {
       localStorage.setItem(Storage_Key, JSON.stringify(board));
     } catch {
@@ -56,13 +58,10 @@ export function useBoard() {
 
       if (id === beforeId) return;
       setBoard((prev) => {
-        const next: BoardState = {
-          todo: [...prev.todo],
-          doing: [...prev.doing],
-          done: [...prev.done],
-        };
+        const next: BoardState = { todo: [...prev.todo], doing: [...prev.doing], done: [...prev.done]};
 
         let moved;
+
         for (const col of Object.keys(next) as ColumnId[]) {
           const i = next[col].findIndex((t) => t.id === id);
           if (i > -1) {
@@ -77,6 +76,7 @@ export function useBoard() {
         const at = beforeId ? target.findIndex((t) => t.id === beforeId) : -1;
         
         if (at === -1) target.push(moved);
+        
         else target.splice(at, 0, moved);
         return next;
       });

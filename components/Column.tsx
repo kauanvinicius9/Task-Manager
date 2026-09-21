@@ -9,6 +9,7 @@ interface Props {
   column: ColumnConfig;
   tasks: Task[];
   draggingId: string | null;
+  
   onDragStart: (id: string) => void;
   onDragEnd: () => void;
   onDropTask: (beforeId?: string) => void;
