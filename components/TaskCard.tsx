@@ -37,7 +37,7 @@ export default function TaskCard({ task, columnId, isDragging, onDragStart, onDr
     const value = draft.trim();
 
     if (value && value !== task.title) onUpdate(task.id, value);
-    
+
     else setDraft(task.title);
     setEditing(false);
   };
@@ -51,9 +51,8 @@ export default function TaskCard({ task, columnId, isDragging, onDragStart, onDr
 
       <div className={`h-1 ${over && !isDragging ? "mb-2 bg-doing" : "bg-transparent"}`}/>
 
-      <article draggable={!editing} onDragStart={(e) => { e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", task.id); onDragStart(task.id)}}
-         onDragEnd={() => { setOver(false); onDragEnd()}}
-        className={`group border-b border-black bg-white p-3 shadow-sm bg-zinc-100 ${editing ? "" : "cursor-grab active:cursor-grabbing"} ${isDragging ? "opacity-40" : ""}`}>
+      <article draggable={!editing} onDragStart={(e) => { e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", task.id); onDragStart(task.id)}} onDragEnd={() => { setOver(false); onDragEnd()}}
+                     className={`group border-b border-black bg-white p-3 shadow-sm hover:bg-zinc-200 bg-zinc-100 ${editing ? "" : "cursor-grab active:cursor-grabbing"} ${isDragging ? "opacity-40" : ""}`}>
 
         {editing ? (
           <textarea rows={2} value={draft} onChange={(e) => setDraft(e.target.value)} onBlur={commit} onKeyDown={(e) => {

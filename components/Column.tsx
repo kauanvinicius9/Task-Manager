@@ -9,7 +9,7 @@ interface Props {
   column: ColumnConfig;
   tasks: Task[];
   draggingId: string | null;
-  
+
   onDragStart: (id: string) => void;
   onDragEnd: () => void;
   onDropTask: (beforeId?: string) => void;
@@ -40,7 +40,7 @@ export default function Column({ column, tasks, draggingId, onDragStart, onDragE
 
         {tasks.length === 0 && (
           <li className="list-none border border-dashed border-line px-3 py-6 text-center text-sm text-zinc-400">
-            Nenhuma tarefa aqui. Arraste um cartão ou adicione uma nova.
+            Nenhuma tarefa aqui. Arraste um cartão ou adicione uma nova
           </li>
         )}
       </ul>
