@@ -67,7 +67,7 @@ export default function TaskCard({ task, columnId, isDragging, onDragStart, onDr
               }
             }}
 
-            className="w-full resize-none border border-line p-2 text-sm"/>
+            className="w-full resize-none border border-line p-2 text-sm focus:ouline-none focus:ring-0"/>
         ) : (
           <p className={`break-words text-sm leading-snug ${columnId === "done" ? "text-muted line-through" : ""}`} onDoubleClick={() => setEditing(true)}>
             {task.title}
