@@ -1,9 +1,11 @@
 export type ColumnId = "todo" | "doing" | "done";
+export type Priority = "low" | "medium" | "high";
 export type BoardState = Record<ColumnId, Task[]>;
 
 export interface Task {
   id: string;
   title: string;
+  priority: string;
 }
 
 export interface ColumnConfig {
@@ -36,10 +38,10 @@ export const Columns: ColumnConfig[] = [
 
 export const Initial_Board: BoardState = {
   todo: [
-    { id: "t1", title: "Revisar o orçamento do mês" },
-    { id: "t2", title: "Marcar consulta no dentista" },
+    { id: "t1", title: "Revisar o orçamento do mês", priority: "high" },
+    { id: "t2", title: "Marcar consulta no dentista", priority: "medium" },
   ],
   
-  doing: [{ id: "t3", title: "Escrever o relatório trimestral" }],
-  done: [{ id: "t4", title: "Enviar a declaração de horas" }],
+  doing: [{ id: "t3", title: "Escrever o relatório trimestral", priority: "low" }],
+  done: [{ id: "t4", title: "Enviar a declaração de horas", priority: "low" }],
 };
