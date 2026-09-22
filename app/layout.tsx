@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Task Manager",
   description: "Organize suas tarefas em: A Fazer, Em Andamento e Concluídas.",
   icons: {
-    icon: "/bosch_symbol_logo_black_2.png"
+    icon: "/bosch_symbol_logo_black_2.svg"
   },
 };
 

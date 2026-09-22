@@ -3,7 +3,7 @@
 import { Priority } from "@/lib/types";
 
 interface PriorityBadgeProps {
-    priority: Priority:
+    priority: Priority
 }
 
 const priorityMap: Record<Priority, { label: string; className: string}> = {
@@ -16,7 +16,7 @@ export default function PriorityBadge({ priority }: PriorityBadgeProps) {
     const config = priorityMap[priority] || priorityMap.medium;
 
     return (
-        <span className={`inline-block px-2 py-0.5 text-xs font-normal ${config.className}`}>
+        <span className={`inline-block px-2 py-0.5 text-xs w-20 text-center ${config.className}`}>
             {config.label}
         </span>
     );

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Columns, ColumnId, Task } from "@/lib/types";
+import { Columns, ColumnId, Priority, Task } from "@/lib/types";
 import PriorityBadge from "./PriorityBadge";
+import PrioritySelect from "./PrioritySelect";
 
 import Image from "next/image";
 import arrow_left from "../assets/arrow_left.png";
@@ -18,7 +19,7 @@ interface Props {
   onDragStart: (id: string) => void;
   onDragEnd: () => void;
   onDropOnCard: (beforeId: string) => void;
-  onUpdate: (id: string, title: string) => void;
+  onUpdate: (id: string, title: string, priority?: Priority) => void;
   onDelete: (id: string) => void;
   onMove: (id: string, to: ColumnId) => void;
 }
@@ -53,17 +54,12 @@ export default function TaskCard({ task, columnId, isDragging, onDragStart, onDr
       <div className={`h-1 ${over && !isDragging ? "mb-2 bg-doing" : "bg-transparent"}`}/>
 
       <article draggable={!editing} onDragStart={(e) => { e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", task.id); onDragStart(task.id)}} onDragEnd={() => { setOver(false); onDragEnd()}}
-                     className={`group border-b border-black bg-white p-3 shadow-sm hover:bg-zinc-200 bg-zinc-100 ${editing ? "" : "cursor-grab active:cursor-grabbing"} ${isDragging ? "opacity-40" : ""}`}>
+                     className={`group border-b border-black bg-white p-3 shadow-sm bg-zinc-100 ${editing ? "" : "cursor-grab active:cursor-grabbing"} ${isDragging ? "opacity-40" : ""}`}>
 
         {!editing && (
           <div className="mb-2 flex items-center justify-between">
             <PriorityBadge priority={task.priority}/>
-
-            <select value={task.priority || "medium"} onChange={(e) => onUpdate(task.id, task.title, e.target.value as Priority)} className="cursor-pointer border-none bg-transparent text-[11px] font-medium text-zinc-500 outline-none hover:text-black">
-              <option value="low">Baixa</option>
-              <option value="medium">Média</option>
-              <option value="high">Alta</option>
-            </select>
+            <PrioritySelect value={task.priority || "medium"} onChange={(newPriority) => onUpdate(task.id, task.title, newPriority)} />
           </div>
         )}
 

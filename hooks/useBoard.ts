@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { BoardState, ColumnId, Initial_Board } from "@/lib/types";
+import { Priority } from "@/lib/types";
 
 const Storage_Key = "task-manager:v1";
 
@@ -15,7 +16,6 @@ export function useBoard() {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(Storage_Key);
-
       if (saved) setBoard(JSON.parse(saved) as BoardState);
     } catch {}
     setReady(true);
@@ -26,21 +26,36 @@ export function useBoard() {
 
     try {
       localStorage.setItem(Storage_Key, JSON.stringify(board));
-    } catch {
-  }
+    } catch {}
+    setReady(true);
+ }, []);
+ 
+ useEffect(() => {
+  if (!ready) return;
+
+  try {
+    localStorage.setItem(Storage_Key, JSON.stringify(board));
+  } catch {}
  }, [board, ready]);
 
-  const addTask = useCallback((columnId: ColumnId, title: string) => {
+  const addTask = useCallback((columnId: ColumnId, title: string, priority: Priority) => {
+    const newTask: Task = {
+      id: crypto.randomUUID(),
+      title,
+      priority: priority || "medium",
+    };
+
     setBoard((prev) => ({
       ...prev,
-      [columnId]: [...prev[columnId], { id: newId(), title }],
+      [columnId]: [...prev[columnId], newTask ],
     }));
   }, []);
 
-  const updateTask = useCallback((id: string, title: string) => {
+  const updateTask = useCallback((id: string, title: string, priority?: Priority) => {
     setBoard((prev) => {
       const next = { ...prev };
-      (Object.keys(next) as ColumnId[]).forEach((col) => { next[col] = next[col].map((t) => (t.id === id ? { ...t, title } : t)) });
+      (Object.keys(next) as ColumnId[]).forEach((col) => { next[col] = next[col].map((t) => (t.id === id ? 
+                    { ...t, title, priority: priority !== undefined ? priority  : t.priority} : t)) });
       return next;
     });
   }, []);

@@ -5,7 +5,12 @@ export type BoardState = Record<ColumnId, Task[]>;
 export interface Task {
   id: string;
   title: string;
-  priority: string;
+  priority: Priority;
+}
+
+export interface ToastProps {
+  message: string;
+  visible: boolean;
 }
 
 export interface ColumnConfig {

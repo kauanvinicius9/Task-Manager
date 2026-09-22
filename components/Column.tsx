@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ColumnConfig, Task } from "@/lib/types";
+import { ColumnConfig, Priority, Task } from "@/lib/types";
 import AddTask from "./AddTask";
 import TaskCard from "./TaskCard";
 
@@ -13,7 +13,7 @@ interface Props {
   onDragStart: (id: string) => void;
   onDragEnd: () => void;
   onDropTask: (beforeId?: string) => void;
-  onAdd: (title: string) => void;
+  onAdd: (title: string, priority: Priority) => void;
   onUpdate: (id: string, title: string) => void;
   onDelete: (id: string) => void;
   onMove: (id: string, to: ColumnConfig["id"]) => void;
@@ -45,7 +45,7 @@ export default function Column({ column, tasks, draggingId, onDragStart, onDragE
         )}
       </ul>
 
-      <AddTask onAdd={onAdd} />
+      <AddTask onAdd={(title, priority) => onAdd(title, priority)} />
     </section>
   );
 }
