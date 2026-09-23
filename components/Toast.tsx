@@ -6,6 +6,7 @@ import icon_check from "../assets/icon_check.png";
 import icon_error from "../assets/icon_error.png";
 import { ToastProps } from "@/lib/types";
 
+// Mensagens (Toasts) para cada ação realizada no sistema
 function ToastBase({ message, visible, bgColor, icon, iconAlt }: ToastProps & { bgColor: string; icon: StaticImageData; iconAlt: string }) {
   return (
     <div className={`fixed top-5 right-5 z-[9999] flex min-w-[320px] items-center gap-3 px-5 py-4 ${bgColor} transform transition-all duration-500 ease-in-out ${visible ? "translate-x-0 opacity-100" : "translate-x-[120%] opacity-0 pointer-events-none"}`}>

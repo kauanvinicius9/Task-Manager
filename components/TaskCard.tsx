@@ -11,6 +11,7 @@ import arrow_right from "../assets/arrow_right.png";
 import icon_delete from "../assets/icon_delete.png";
 import icon_edit from "../assets/icon_edit.png";
 
+// Funções em
 interface Props {
   task: Task;
   columnId: ColumnId;
@@ -53,6 +54,7 @@ export default function TaskCard({ task, columnId, isDragging, onDragStart, onDr
 
       <div className={`h-1 ${over && !isDragging ? "mb-2 bg-doing" : "bg-transparent"}`}/>
 
+      {/* Drag and drop em produção */}
       <article draggable={!editing} onDragStart={(e) => { e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", task.id); onDragStart(task.id)}} onDragEnd={() => { setOver(false); onDragEnd()}}
                      className={`group border-b border-black bg-white p-3 shadow-sm bg-zinc-100 ${editing ? "" : "cursor-grab active:cursor-grabbing"} ${isDragging ? "opacity-40" : ""}`}>
 

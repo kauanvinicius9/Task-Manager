@@ -22,6 +22,7 @@ export default function PrioritySelect({ value, onChange }: Props) {
 
   const selected = priorities.find((p) => p.value === value) || priorities[1];
 
+  // Dropdown personalizado, sem precisar usar seleção nativa
   useEffect(() => {const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setOpen(false);
@@ -39,6 +40,7 @@ export default function PrioritySelect({ value, onChange }: Props) {
         <Image src={arrow_down} alt="Seta para baixo" className="w-5 h-5" />
       </button>
 
+      {/* Dropdown aberto */}
       {open && (
         <ul className="absolute left-0 top-full z-50 mt-1 w-full border border-zinc-200 bg-white py-1 shadow-md">
           {priorities.map((priority) => (

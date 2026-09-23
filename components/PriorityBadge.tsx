@@ -6,6 +6,7 @@ interface PriorityBadgeProps {
     priority: Priority
 }
 
+// Badges
 const priorityMap: Record<Priority, { label: string; className: string}> = {
     low: { label: "Baixa prioridade", className: "bg-[#e2f5e7] text-[#5ebd82] border-[#5ebd82]"},
     medium: { label: "Média prioridade", className: "bg-[#ffefd1] text-[#cda600] border-[#cda600]"},

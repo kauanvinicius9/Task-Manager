@@ -5,6 +5,7 @@ import { ColumnConfig, Priority, Task } from "@/lib/types";
 import AddTask from "./AddTask";
 import TaskCard from "./TaskCard";
 
+// Funções em uso
 interface Props {
   column: ColumnConfig;
   tasks: Task[];
@@ -38,6 +39,7 @@ export default function Column({ column, tasks, draggingId, onDragStart, onDragE
                               onDragEnd={onDragEnd} onDropOnCard={onDropTask} onUpdate={onUpdate} onDelete={onDelete} onMove={onMove}/>
         ))}
 
+        {/* Em caso de card vazio, sem nenhuma tarefa */}
         {tasks.length === 0 && (
           <li className="list-none border border-dashed border-line px-3 py-6 text-center text-sm text-zinc-400">
             Nenhuma tarefa aqui. Arraste um cartão ou adicione uma nova

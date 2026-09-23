@@ -13,6 +13,7 @@ export function useBoard() {
   const [board, setBoard] = useState<BoardState>(Initial_Board);
   const [ready, setReady] = useState(false);
 
+  // Salvamento de tarefas no LocalStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem(Storage_Key);
@@ -51,6 +52,7 @@ export function useBoard() {
     }));
   }, []);
 
+  // Atualizar tarefas
   const updateTask = useCallback((id: string, title: string, priority?: Priority) => {
     setBoard((prev) => {
       const next = { ...prev };
@@ -60,6 +62,7 @@ export function useBoard() {
     });
   }, []);
 
+  // Remover tarefas
   const removeTask = useCallback((id: string) => {
     setBoard((prev) => {
       const next = { ...prev };
@@ -68,6 +71,7 @@ export function useBoard() {
     });
   }, []);
 
+  // Mover tarefas
   const moveTask = useCallback(
     (id: string, to: ColumnId, beforeId?: string) => {
 
@@ -99,6 +103,7 @@ export function useBoard() {
     [],
   );
 
+  // Limpeza de tarefas concluídas
   const clearDone = useCallback(() => {
     setBoard((prev) => ({ ...prev, done: [] }));
   }, []);
