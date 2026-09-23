@@ -94,7 +94,8 @@ const handleMoveTask = (id: string, to: ColumnId, beforeId?: string) => {
         </div>
 
         {done > 0 && (
-          <button type="button" onClick={() => {clearDone(); showToast("Tarefas concluídas limpadas", "success"); }} className="border border-2 border-sky-600 bg-white px-3 py-2 text-sm font-normal hover:bg-sky-100 text-sky-600">
+          <button type="button" onClick={() => {clearDone(); done ? showToast("Tarefas concluídas limpadas", "success") : showToast("Não foi possível limpar as tarefas concluídas", "error")}} 
+                          className="border border-2 border-sky-600 bg-white px-3 py-2 text-sm font-normal hover:bg-sky-100 text-sky-600">
             Limpar concluídas
           </button>
         )}
