@@ -29,6 +29,7 @@ export default function AddTask({ onAdd }: Props) {
     );
   }
 
+  // Ações podem ser realizadas usando a tecla "Enter"
   return (
     <div className="mt-3">
       <textarea rows={2} value={title} placeholder="Descreva a tarefa" onChange={(e) => setTitle(e.target.value)} onKeyDown={(e) => {
@@ -42,7 +43,8 @@ export default function AddTask({ onAdd }: Props) {
 
       <div className="flex items-center justify-between border-b border-black bg-zinc-100 px-3 py-2 text-sm shadow-sm">
         <label className="text-xs text-zinc-600">Defina a prioridade</label>
-  
+
+        {/* Retorno do badge de prioridade para escolha, será salva junto com a demanda (acima do nome) */}
         <PrioritySelect value={priority} onChange={(newPriority) => setPriority(newPriority)} />
       </div>
 

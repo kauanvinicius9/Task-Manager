@@ -22,6 +22,7 @@ export default function Board() {
     type: "success",
   });
 
+  // Exibição do toast (mensagens)
   const showToast = (message: string, type: ToastType) => {
     setToast({ message, visible: true, type});
     setTimeout(() => {
@@ -29,6 +30,7 @@ export default function Board() {
     }, 3500);
   };
 
+  // Mensagem para limite de demandas atingidas
   const handleAddTask = (columnId: ColumnId, title: string, priority: Priority) => {
     if (columnId === "doing" && board.doing.length >= wip_limit) {
       showToast(`Limite de 0${wip_limit} tarefas em andamento atingido`, "alert");
@@ -43,6 +45,7 @@ export default function Board() {
   };
 }
 
+// Mensagem para movimentação, troca de demanda
 const handleMoveTask = (id: string, to: ColumnId, beforeId?: string) => {
     const isAlreadyInDoing = board.doing.some((t) => t.id === id);
 
@@ -58,6 +61,7 @@ const handleMoveTask = (id: string, to: ColumnId, beforeId?: string) => {
     };
   }
 
+  // Mensagem para atualização de demanda
   const handleUpdateTask = (id: string, title: string, priority?: Priority) => {
     try {
       updateTask(id, title, priority);
@@ -67,6 +71,7 @@ const handleMoveTask = (id: string, to: ColumnId, beforeId?: string) => {
     };
   }
   
+  // Mensagem para exclusão de demanda
   const handleDeleteTask = (id: string) => {
     try {
       removeTask(id);
@@ -78,6 +83,7 @@ const handleMoveTask = (id: string, to: ColumnId, beforeId?: string) => {
 
   return (
     <>
+        {/* Toasts componentizados e personalizados */}
       <ToastSuccess message={toast.message} visible={toast.visible && toast.type === "success"} />
       <ToastAlert message={toast.message} visible={toast.visible && toast.type === "alert"} />
       <ToastError message={toast.message} visible={toast.visible && toast.type === "error"} />
@@ -88,6 +94,7 @@ const handleMoveTask = (id: string, to: ColumnId, beforeId?: string) => {
             Task Manager
           </h1>
 
+          {/* Contagem dinâmica de demandas totais concluídas */}
           <p className="mt-1 text-zinc-400">
             {total === 0 ? "Não há tarefas por enquanto" : `0${done} de 0${total} ${total === 1 ? "tarefa concluída" : "tarefas concluídas"}`}
           </p>
