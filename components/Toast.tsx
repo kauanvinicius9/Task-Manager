@@ -17,21 +17,21 @@ function ToastBase({ message, visible, bgColor, icon, iconAlt }: ToastProps & { 
   );
 }
 
-// Alerta
+// Mensagem de alerta
 export function ToastAlert({ message, visible }: ToastProps) {
   return (
     <ToastBase message={message} visible={visible} bgColor="bg-[#ffdf95]" icon={icon_alert} iconAlt="Aviso"/>
   );
 }
 
-// Sucesso
+// Mensagem de sucesso
 export function ToastSuccess({ message, visible }: ToastProps) {
   return (
     <ToastBase message={message} visible={visible} bgColor="bg-[#b8efc9]" icon={icon_check} iconAlt="Sucesso"/>
   );
 }
 
-// Erro
+// Mensagem de erro
 export function ToastError({ message, visible }: ToastProps) {
   return (
     <ToastBase message={message} visible={visible} bgColor="bg-[#ffc6c6]" icon={icon_error} iconAlt="Erro"/>
